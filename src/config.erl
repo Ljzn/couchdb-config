@@ -406,6 +406,8 @@ parse_ini_file(IniFile) ->
                     _ ->
                         {AccSectionName, AccValues}
                     end;
+                [] -> % line begins with "=", ignore
+                    {AccSectionName, AccValues};
                 [""|_LineValues] -> % line begins with "=", ignore
                     {AccSectionName, AccValues};
                 [ValueName|LineValues] -> % yeehaw, got a line!
